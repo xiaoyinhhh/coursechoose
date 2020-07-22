@@ -1,11 +1,16 @@
 package com.yinxq.main;
 
+import com.yinxq.dao.TermMgrDao;
 import com.yinxq.util.UserUtil;
+import com.yinxq.view.GradeMgrView;
+import com.yinxq.view.TermMgrView;
 import com.yinxq.view.UserView;
 
 import java.util.Scanner;
 
 public class Menu {
+    GradeMgrView gradeMgrView=new GradeMgrView();
+    TermMgrView termMgrView=new TermMgrView();
     public static void main(String[] args) {
         new Menu().mainView();
     }
@@ -58,8 +63,10 @@ public class Menu {
         String ope=sc.next();
         switch (ope){
             case "1.1":
+                gradeMgr(sc);
                 break;
             case "1.2":
+                termMgr(sc);
                 break;
             case "1.3":
                 break;
@@ -103,6 +110,70 @@ public class Menu {
             case "2":
                 break;
             default:
+                break;
+        }
+    }
+    //年级管理
+    public void gradeMgr(Scanner sc){
+        System.out.println("-----------欢迎来到年级管理------------");
+        System.out.println("----------1、查询年级-----------");
+        System.out.println("----------2、添加年级-----------");
+        System.out.println("----------3、修改年级-----------");
+        System.out.println("----------4、删除年级-----------");
+        System.out.println("----------5、回到上一级-----------");
+        System.out.println("请选择要进行的操作: ");
+        int ope=sc.nextInt();
+        switch (ope){
+            case 1:
+                gradeMgrView.queryGrade();
+                gradeMgr(sc);
+                break;
+            case 2:
+                gradeMgrView.addGrade(sc);
+                gradeMgr(sc);
+                break;
+            case 3:
+                gradeMgrView.updateGrade(sc);
+                gradeMgr(sc);
+                break;
+            case 4:
+                gradeMgrView.deleteGrade(sc);
+                gradeMgr(sc);
+                break;
+            case 5:
+                managerMenu(sc);
+                break;
+        }
+    }
+    //学期管理
+    public void termMgr(Scanner sc) {
+        System.out.println("-----------欢迎来到学期管理------------");
+        System.out.println("----------1、查询学期-----------");
+        System.out.println("----------2、添加学期-----------");
+        System.out.println("----------3、修改学期-----------");
+        System.out.println("----------4、删除学期-----------");
+        System.out.println("----------5、回到上一级-----------");
+        System.out.println("请选择要进行的操作: ");
+        int ope=sc.nextInt();
+        switch (ope){
+            case 1:
+                termMgrView.queryTerm();
+                termMgr(sc);
+                break;
+            case 2:
+                termMgrView.addTerm(sc);
+                termMgr(sc);
+                break;
+            case 3:
+                termMgrView.updateTerm(sc);
+                termMgr(sc);
+                break;
+            case 4:
+                termMgrView.deleteTerm(sc);
+                termMgr(sc);
+                break;
+            case 5:
+                managerMenu(sc);
                 break;
         }
     }
