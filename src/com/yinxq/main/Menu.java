@@ -1,16 +1,21 @@
 package com.yinxq.main;
 
+import com.yinxq.dao.TeacherMgrDao;
 import com.yinxq.dao.TermMgrDao;
 import com.yinxq.util.UserUtil;
-import com.yinxq.view.GradeMgrView;
-import com.yinxq.view.TermMgrView;
-import com.yinxq.view.UserView;
+import com.yinxq.view.*;
 
 import java.util.Scanner;
 
 public class Menu {
+    //年级管理
     GradeMgrView gradeMgrView=new GradeMgrView();
+    //学期管理
     TermMgrView termMgrView=new TermMgrView();
+    //教室管理
+    RoomMgrView roomMgrView=new RoomMgrView();
+    //教师管理
+    TeacherMgrView teacherMgrView=new TeacherMgrView();
     public static void main(String[] args) {
         new Menu().mainView();
     }
@@ -69,8 +74,10 @@ public class Menu {
                 termMgr(sc);
                 break;
             case "1.3":
+                roomMgr(sc);
                 break;
             case "1.4":
+                teacherMgr(sc);
                 break;
             case "1.5":
                 break;
@@ -177,4 +184,69 @@ public class Menu {
                 break;
         }
     }
+    //教室管理
+    public void roomMgr(Scanner sc) {
+        System.out.println("-----------欢迎来到教室管理------------");
+        System.out.println("----------1、查询教室-----------");
+        System.out.println("----------2、添加教室-----------");
+        System.out.println("----------3、修改教室-----------");
+        System.out.println("----------4、删除教室-----------");
+        System.out.println("----------5、回到上一级-----------");
+        System.out.println("请选择要进行的操作: ");
+        int ope=sc.nextInt();
+        switch (ope){
+            case 1:
+                roomMgrView.queryroomName();
+                roomMgr(sc);
+                break;
+            case 2:
+                roomMgrView.addRome(sc);
+                roomMgr(sc);
+                break;
+            case 3:
+                roomMgrView.updateRoom(sc);
+                roomMgr(sc);
+                break;
+            case 4:
+                roomMgrView.deleteRoom(sc);
+                roomMgr(sc);
+                break;
+            case 5:
+                managerMenu(sc);
+                break;
+        }
+    }
+    //教师管理
+    public void teacherMgr(Scanner sc) {
+        System.out.println("-----------欢迎来到教师管理------------");
+        System.out.println("----------1、查询教师-----------");
+        System.out.println("----------2、添加教师-----------");
+        System.out.println("----------3、修改教师-----------");
+        System.out.println("----------4、删除教师-----------");
+        System.out.println("----------5、回到上一级-----------");
+        System.out.println("请选择要进行的操作: ");
+        int ope=sc.nextInt();
+        switch (ope){
+            case 1:
+                teacherMgrView.queryTeacher();
+                roomMgr(sc);
+                break;
+            case 2:
+                teacherMgrView.addTeacher(sc);
+                termMgr(sc);
+                break;
+            case 3:
+                roomMgrView.updateRoom(sc);
+                roomMgr(sc);
+                break;
+            case 4:
+                roomMgrView.deleteRoom(sc);
+                roomMgr(sc);
+                break;
+            case 5:
+                managerMenu(sc);
+                break;
+        }
+    }
+
 }
