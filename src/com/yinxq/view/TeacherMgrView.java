@@ -45,7 +45,7 @@ public class TeacherMgrView {
             System.out.println(item.getId()+"\t\t"+item.getTeacherNo()+"\t\t"+item.getTeacherName()+"\t\t"+item.getUserId());
         });
     }
-    public void updateTerm(Scanner sc){
+    public void updateTeacher(Scanner sc){
         System.out.println("请输入要修改的用户名: ");
         int id=sc.nextInt();
         System.out.println("请输入要修改的密码: ");
@@ -58,17 +58,17 @@ public class TeacherMgrView {
             System.out.println("修改成功");
         }else{
             System.out.println("修改失败");
-            updateTerm(sc);
+            updateTeacher(sc);
         }
     }
-    public void deleteTerm(Scanner sc){
-        System.out.println("请输入要删除的年级ID: ");
+    public void deleteTeacher(Scanner sc){
+        System.out.println("请输入要删除的教师ID: ");
         int id=sc.nextInt();
        if (teacherMgrDao.deleteTeacher(id)){
             System.out.println("删除成功");
         }else{
             System.out.println("删除失败");
-            deleteTerm(sc);
+            deleteTeacher(sc);
         }
     }
 }

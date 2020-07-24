@@ -16,6 +16,10 @@ public class Menu {
     RoomMgrView roomMgrView=new RoomMgrView();
     //教师管理
     TeacherMgrView teacherMgrView=new TeacherMgrView();
+    //学生管理
+    StudentMgrView studentMgrView=new StudentMgrView();
+    //课程管理
+    CourseMgrView courseMgrView=new CourseMgrView();
     public static void main(String[] args) {
         new Menu().mainView();
     }
@@ -80,8 +84,10 @@ public class Menu {
                 teacherMgr(sc);
                 break;
             case "1.5":
+                studentMgr(sc);
                 break;
             case "1.6":
+                courseMgr(sc);
                 break;
             case "2":
                 break;
@@ -229,19 +235,83 @@ public class Menu {
         switch (ope){
             case 1:
                 teacherMgrView.queryTeacher();
-                roomMgr(sc);
+                teacherMgr(sc);
                 break;
             case 2:
                 teacherMgrView.addTeacher(sc);
-                termMgr(sc);
+                teacherMgr(sc);
                 break;
             case 3:
                 roomMgrView.updateRoom(sc);
-                roomMgr(sc);
+                teacherMgr(sc);
                 break;
             case 4:
-                roomMgrView.deleteRoom(sc);
-                roomMgr(sc);
+                teacherMgrView.deleteTeacher(sc);
+                teacherMgr(sc);
+                break;
+            case 5:
+                managerMenu(sc);
+                break;
+        }
+    }
+    //学生管理
+    public void studentMgr(Scanner sc) {
+        System.out.println("-----------欢迎来到学生管理------------");
+        System.out.println("----------1、查询学生-----------");
+        System.out.println("----------2、添加学生-----------");
+        System.out.println("----------3、修改学生-----------");
+        System.out.println("----------4、删除学生-----------");
+        System.out.println("----------5、回到上一级-----------");
+        System.out.println("请选择要进行的操作: ");
+        int ope=sc.nextInt();
+        switch (ope){
+            case 1:
+                studentMgrView.queryStudent();
+                studentMgr(sc);
+                break;
+            case 2:
+                studentMgrView.addStudent(sc);
+                studentMgr(sc);
+                break;
+            case 3:
+                studentMgrView.updateStudent(sc);
+                studentMgr(sc);
+                break;
+            case 4:
+                studentMgrView.deleteStudent(sc);
+                studentMgr(sc);
+                break;
+            case 5:
+                managerMenu(sc);
+                break;
+        }
+    }
+    //课程管理
+    public void courseMgr(Scanner sc) {
+        System.out.println("-----------欢迎来到课程管理------------");
+        System.out.println("----------1、查询课程-----------");
+        System.out.println("----------2、添加课程-----------");
+        System.out.println("----------3、修改课程-----------");
+        System.out.println("----------4、删除课程-----------");
+        System.out.println("----------5、回到上一级-----------");
+        System.out.println("请选择要进行的操作: ");
+        int ope=sc.nextInt();
+        switch (ope){
+            case 1:
+                courseMgrView.queryCourse();
+                courseMgr(sc);
+                break;
+            case 2:
+                courseMgrView.addCourse(sc);
+                courseMgr(sc);
+                break;
+            case 3:
+                courseMgrView.updateCourse(sc);
+                courseMgr(sc);
+                break;
+            case 4:
+               courseMgrView.deleteTerm(sc);
+                courseMgr(sc);
                 break;
             case 5:
                 managerMenu(sc);
